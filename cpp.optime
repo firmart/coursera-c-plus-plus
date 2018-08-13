@@ -1,0 +1,48 @@
+author=Firmin Martin
+title=<<C++ for C Programmer>> Notes
+columns=2
+
+s:Week 1
+
+cc:From C to C++
+*C*                                & *C++*
+@code[c](#include <stdio.h>)       & @code[cpp](#include <cstdio>)
+                                   & @code[cpp](using namespace std)
+@code[c](#define PI 3.14)          & @code[cpp](const float PI = 3.14)
+@code[c](#define max(a,b) (...)) & @code[cpp](inline max(a, b) {...})
+
+c:Simple I/O functions
+@code[cpp](cout << "Print something" << endl)
+@code[cpp](cin  >> input)
+
+cc:Cast
+*static cast* : (_safe cast_) Convert if there is a rule based conversion, otherwise error & @code[cpp](static cast<double> 5/4)
+
+c:Function call
+Call by value
+Call by pointer
+*Call by reference*
+> @l[An Introduction to Reference](https://www.embedded.com/electronics-blogs/programming-pointers/4024641/An-Introduction-to-References)
+
+code:c++:Overload
+inline void swap(int &i, int &j) {
+    int tmp = i
+    i = j
+    j = tmp
+}
+inline void swap(double &i, double &j) {
+    double tmp = i
+    i = j
+    j = tmp
+}
+
+
+
+code:c++:Generic
+template<class T>
+inline void swap(T &i, T &j) {
+    T tmp = i
+    i = j
+    j = tmp
+}
+
