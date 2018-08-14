@@ -1,5 +1,6 @@
 author=Firmin Martin
 title=<<C++ for C Programmer>> Notes
+debug=debug
 columns=2
 
 s:Week 1
@@ -16,7 +17,10 @@ c:Simple I/O functions
 @code[cpp](cin  >> input)
 
 cc:Cast
-*static cast* : (_safe cast_) Convert if there is a rule based conversion, otherwise error & @code[cpp](static cast<double> 5/4)
+*static cast* : (_safe cast_) Convert if there is a rule based conversion, otherwise error & @code[cpp](static_cast<double> 5/4)
+*reinterpret cast* :  & 
+*dynamic cast* :  used with object & 
+*const cast* : cast away const-ness & 
 
 c:Function call
 Call by value
@@ -30,6 +34,7 @@ inline void swap(int &i, int &j) {
     i = j
     j = tmp
 }
+ 
 inline void swap(double &i, double &j) {
     double tmp = i
     i = j
@@ -46,3 +51,17 @@ inline void swap(T &i, T &j) {
     j = tmp
 }
 
+s:Week 2
+
+c:Function default parameter
+`T sum (T arr[], int count, T @c[red](s = 0))`
+
+code:c++:Multiple template arguments
+template <class T1, class T2>
+void copy (const T1 src[], T2 dest[], int size) {
+ 
+    for (int i = 0; i < size; ++i) {
+        dest[i] = static_cast<T2>(src[i]);
+    }
+ 
+}
