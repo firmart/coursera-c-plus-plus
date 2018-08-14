@@ -65,3 +65,11 @@ void copy (const T1 src[], T2 dest[], int size) {
     }
  
 }
+
+code:c++:Enumerate type
+typedef enum {MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY} days;
+
+code:c++:Operator overloading
+inline days operator++ (days d) {
+    return static_cast<days>((static_cast<int>(d) + 1) % 7);
+}
