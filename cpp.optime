@@ -66,10 +66,20 @@ void copy (const T1 src[], T2 dest[], int size) {
  
 }
 
-code:c++:Enumerate type
-typedef enum {MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY} days;
+cc:Enumerate type
+*Enumeration* : auto casted to @code[c++](int)                            & `typedef enum {MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY} days;`
+*Enumeration class* : need to  @code[c++](static_cast<int>()) explicitly & `@color[red](enum class WeekDays : int) {MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY};`
+
 
 code:c++:Operator overloading
-inline days operator++ (days d) {
-    return static_cast<days>((static_cast<int>(d) + 1) % 7);
+/* prefix operator */
+WeekDay& operator++ (WeekDay &d) {
+    return d = static_cast<WeekDay>((static_cast<int>(d) + 1) % 7);
+}
+ 
+/* suffix operator, add extra parameter to distinguish from prefix parameter */
+WeekDay operator++ (WeekDay &d, int) {
+    WeekDay tmp = d;
+    d = static_cast<WeekDay>((static_cast<int>(d) + 1) % 7);
+    return tmp;
 }
